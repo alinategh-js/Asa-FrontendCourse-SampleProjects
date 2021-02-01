@@ -11,9 +11,7 @@ const FilterList = (props) => {
         className={`list-group-item clickable ${
           selectedItem[keyField] === 0 ? "active" : ""
         }`}
-        onClick={() => {
-          onSelect({ id: 0 });
-        }}
+        onClick={() => onSelect({ id: 0 })}
       >
         All
       </li>
@@ -23,9 +21,7 @@ const FilterList = (props) => {
           className={`list-group-item clickable ${
             selectedItem[keyField] === item[keyField] ? "active" : ""
           }`}
-          onClick={() => {
-            onSelect(item);
-          }}
+          onClick={() => onSelect(item)}
         >
           {item[valueField]}
         </li>
