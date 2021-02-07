@@ -11,7 +11,6 @@ const Pagination = (props) => {
             <li key={i} className={`page-item ${currentPage === i ? "active" : ""}`}>
                 <a 
                     className="page-link" 
-                    href="#" 
                     onClick={() => onPageSelect(i)}
                 >
                     {i}
@@ -28,7 +27,6 @@ const Pagination = (props) => {
                         <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
                             <a 
                                 className="page-link"
-                                href="#"
                                 onClick={() => onPageSelect(currentPage-1)}
                             >
                                 Previous
@@ -40,7 +38,6 @@ const Pagination = (props) => {
                         <li className={`page-item ${currentPage === pages ? "disabled" : ""}`}>
                             <a
                                 className="page-link" 
-                                href="#"
                                 onClick={() => onPageSelect(currentPage+1)}
                             >
                                 Next
