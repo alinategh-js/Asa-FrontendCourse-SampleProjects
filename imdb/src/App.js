@@ -7,6 +7,7 @@ import Posts from "./components/posts";
 import Admin from "./components/admin";
 import Dashboard from "./components/dashboard";
 import Customers from "./components/customers";
+import NewUser from './components/newuser';
 
 function App() {
   return (
@@ -16,7 +17,10 @@ function App() {
         <Switch>
           <Route path="/movies" component={Movies} />
           <Route path="/customers" component={Customers} />
-          <Route path="/users" component={Users} />
+          {/* USERS */}
+          <Route path="/users" exact component={Users} />
+          <Route path='/users/new' exact component={NewUser}/>
+
           <Route path="/posts" component={Posts} />
           <Route path="/admin" component={Admin} />
           <Route

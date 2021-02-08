@@ -1,23 +1,35 @@
 import React , {Component} from "react";
 import axios from 'axios';
-import {Link, Route} from 'react-router-dom';
-import NewUser from '../components/newuser'
+import {Link} from 'react-router-dom';
+import Pagination from '../common/pagination'
 
 class Users extends Component {
 
   state={
-    users: []
+    users: [],
+    pages: 0,
+    page: 1,
   }
 
   async componentDidMount(){
-    const {data} = await axios.get('https://reqres.in/api/users?page=2');
+    const {data} = await axios.get(`https://reqres.in/api/users?page=${this.state.page}`);
     this.setState({
-      users: data.data
+      users: data.data,
+      pages: data.total_pages,
+      page: 1
+    })
+  }
+
+  pageSelected = async (page) => {
+    const {data} = await axios.get(`https://reqres.in/api/users?page=${page}`);
+    this.setState({
+      users: data.data,
+      page: page
     })
   }
 
   render() {
-    const {users} = this.state;
+    const {users, pages, page} = this.state;
     return (
       <>
         <Link to='/users/new'>
@@ -60,9 +72,13 @@ class Users extends Component {
             ))}
           </tbody>
         </table>
-        <Route path='users/new' exact>
-          <NewUser/>
-        </Route>
+
+        <Pagination 
+            pages={pages}
+            currentPage={page}
+            onPageSelect={(page) => this.pageSelected(page)}
+        /> 
+        
       </>
       );
   }
